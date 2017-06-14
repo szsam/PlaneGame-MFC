@@ -60,6 +60,9 @@
     <ClInclude Include="PlaneEnemy2.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="PlaneEnemy3.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PlaneGame.cpp">
@@ -96,6 +99,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="PlaneEnemy2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaneEnemy3.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

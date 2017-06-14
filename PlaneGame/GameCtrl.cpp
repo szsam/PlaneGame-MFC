@@ -79,16 +79,16 @@ void GameCtrl::addEnemy()
 	
 	int rnd = random(0, 50);
 	
-	if (rnd == 0) {	// 出现第三类敌机的概率为1/50
+	if (rnd == 0) {	// 第三类敌机出现的概率为1/50
 		elist.push_back(make_shared<PlaneEnemy3>(x, 0, ENEMY3_HEIGHT, ENEMY3_WIDTH, 
 			ENEMY3_SPEED, ENEMY3_HP));
 	}
-	else if (rnd >= 1 && rnd <= 5)	// 出现第二类敌机的概率为1/10
+	else if (rnd >= 1 && rnd <= 5)	// 第二类敌机出现的概率为1/10
 	{
 		elist.push_back(make_shared<PlaneEnemy2>(x, 0, ENEMY2_HEIGHT, ENEMY2_WIDTH,
 			ENEMY2_SPEED, ENEMY2_HP));
 	}
-	else {	// 出现第一类敌机的概率为44/50
+	else {	// 第一类敌机出现的概率为44/50
 		elist.push_back(make_shared<PlaneEnemy>(x, 0, ENEMY_HEIGHT, ENEMY_WIDTH,
 			ENEMY_SPEED, ENEMY_HP));
 	}

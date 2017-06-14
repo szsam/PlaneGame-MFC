@@ -45,7 +45,7 @@ BOOL CPlaneGameDoc::OnNewDocument()
 	// TODO: 在此添加重新初始化代码
 	// (SDI 文档将重用该文档)
 	// m_gameCtrl.init();
-	if (m_bkground.Load(_T("..\\Image\\bg_01.jpg")) != S_OK)
+	if (m_bkground.Load(_T("..\\Image\\Background.png")) != S_OK)
 		AfxMessageBox(_T("Error in loading background picture"));
 
 	return TRUE;
