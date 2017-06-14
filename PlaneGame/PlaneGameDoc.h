@@ -31,6 +31,7 @@ public:
 	const std::list<PlaneEnemy> &GetEnemyList() const { return m_gameCtrl.getEnemyList(); }
 	const PlanePlayer &GetPlanePlayer() const { return m_gameCtrl.getPlanePlayer(); }
 	int GetScore() const { return m_gameCtrl.getScore(); }
+	const CImage& GetBkground() const { return m_bkground; }
 
 // 重写
 public:
@@ -51,6 +52,7 @@ public:
 
 protected:
 	GameCtrl m_gameCtrl;
+	CImage m_bkground;
 
 // 生成的消息映射函数
 protected:

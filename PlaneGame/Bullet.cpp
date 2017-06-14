@@ -12,4 +12,5 @@ Bullet::Bullet(int x, int y, int h, int w, int s) :
 void Bullet::initImage()
 {
 	image.Load(_T("..\\Image\\Bullet.png"));
+	make_transparent(image);
 }

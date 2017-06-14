@@ -49,7 +49,7 @@ private:
 	//static const int ADD_ENEMY_INTERVAL = 500;
 
 	static const int CLIENT_HEIGHT = 800;
-	static const int CLIENT_WIDTH = 600;
+	static const int CLIENT_WIDTH = 480;
 
 	static const int PLAYER_HEIGHT = 120;
 	static const int PLAYER_WIDTH = 100;

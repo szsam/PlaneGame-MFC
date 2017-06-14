@@ -22,10 +22,16 @@ int random(int a, int b)
 	return (rand() % (a - b)) + a;
 }
 
-//COORD random(COORD a, COORD b)
-//{
-//	int x = random(a.X, b.X);
-//	int y = random(a.Y, b.Y);
-//	COORD c = { x, y };
-//	return c;
-//}
+void make_transparent(CImage &img)
+{
+	for (int i = 0; i < img.GetWidth(); i++)
+	{
+		for (int j = 0; j < img.GetHeight(); j++)
+		{
+			unsigned char* pucColor = reinterpret_cast<unsigned char *>(img.GetPixelAddress(i, j));
+			pucColor[0] = (pucColor[0] * pucColor[3] + 127) / 255;
+			pucColor[1] = (pucColor[1] * pucColor[3] + 127) / 255;
+			pucColor[2] = (pucColor[2] * pucColor[3] + 127) / 255;
+		}
+	}
+}

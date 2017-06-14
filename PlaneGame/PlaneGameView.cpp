@@ -58,18 +58,32 @@ void CPlaneGameView::OnDraw(CDC* pDC)
 		return;
 
 	// TODO: 在此处为本机数据添加绘制代码
+
+	// 绘制背景
+	const CImage &bk = pDoc->GetBkground();
+	if (!bk.IsNull())
+	{
+		bk.Draw(pDC->GetSafeHdc(), 0, 0, 
+			pDoc->GetWidth(), pDoc->GetHeight());
+	}
+
+
+	// 绘制玩家飞机
 	DrawGameObject(pDoc->GetPlanePlayer(), pDC);
 
+	// 绘制子弹
 	for (const auto &b : pDoc->GetBulletList())
 	{
 		DrawGameObject(b, pDC);
 	}
 
+	// 绘制敌机
 	for (const auto &e : pDoc->GetEnemyList())
 	{
 		DrawGameObject(e, pDC);
 	}
 
+	// 打印成绩
 	CString str;
 	str.Format(_T("%d"), pDoc->GetScore());
 	pDC->TextOut(0, 0, str);
