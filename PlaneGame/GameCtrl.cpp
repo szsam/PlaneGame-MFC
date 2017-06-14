@@ -69,7 +69,7 @@ void GameCtrl::updateEnemies()
 void GameCtrl::addEnemy()
 {
 	int x = random(0, width - ENEMY_WIDTH);
-	elist.emplace_back(x, 0, ENEMY_HEIGHT, ENEMY_WIDTH, ENEMY_SPEED);
+	elist.emplace_back(x, 0, ENEMY_HEIGHT, ENEMY_WIDTH, ENEMY_SPEED, 2);
 }
 
 // 检测是否有子弹击中敌机
@@ -84,7 +84,8 @@ void GameCtrl::bulletHitPlane()
 				// 子弹击中敌机
 				++score;
 				itBullet = blist.erase(itBullet);
-				itEnemy = elist.erase(itEnemy);
+				if (!itEnemy->decreaseHP())
+					itEnemy = elist.erase(itEnemy);
 				return;
 			}
 		}
