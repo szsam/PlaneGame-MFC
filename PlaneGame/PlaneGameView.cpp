@@ -77,9 +77,9 @@ void CPlaneGameView::OnDraw(CDC* pDC)
 	}
 
 	// 绘制敌机
-	for (const auto &e : pDoc->GetEnemyList())
+	for (const auto pe : pDoc->GetEnemyList())
 	{
-		DrawGameObject(e, pDC);
+		DrawGameObject(*pe, pDC);
 	}
 
 	// 打印成绩

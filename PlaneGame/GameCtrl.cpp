@@ -1,8 +1,11 @@
 #include "stdafx.h"
 
 #include "GameCtrl.h"
+#include "PlaneEnemy2.h"
+
 #include <ctime>
-#include <string>
+
+using namespace std;
 
 
 GameCtrl::GameCtrl() : 
@@ -12,6 +15,7 @@ GameCtrl::GameCtrl() :
 {
 	Bullet::initImage();
 	PlaneEnemy::initImage();
+	PlaneEnemy2::initImage();
 }
 
 void GameCtrl::init()
@@ -58,7 +62,7 @@ void GameCtrl::updateEnemies()
 	auto it = elist.begin();
 	while (it != elist.end())
 	{
-		if (it->move(height, width))
+		if ((*it)->move(height, width))
 			++it;
 		else
 			it = elist.erase(it);
@@ -69,7 +73,25 @@ void GameCtrl::updateEnemies()
 void GameCtrl::addEnemy()
 {
 	int x = random(0, width - ENEMY_WIDTH);
-	elist.emplace_back(x, 0, ENEMY_HEIGHT, ENEMY_WIDTH, ENEMY_SPEED, 2);
+	// elist.emplace_back(x, 0, ENEMY_HEIGHT, ENEMY_WIDTH, ENEMY_SPEED, ENEMY_HP);
+	
+	int rnd = random(0, 50);
+	
+	if (rnd == 0) {	// 出现第三类敌机的概率为1/50
+		//elist.push_back(make_shared<PlaneEnemy3>(x, 0, ENEMY3_HEIGHT, ENEMY3_WIDTH, 
+		//	ENEMY3_SPEED, ENEMY3_HP));
+	}
+	else if (rnd >= 1 && rnd <= 5)	// 出现第二类敌机的概率为1/10
+	{
+		elist.push_back(make_shared<PlaneEnemy2>(x, 0, ENEMY2_HEIGHT, ENEMY2_WIDTH,
+			ENEMY2_SPEED, ENEMY2_HP));
+	}
+	else {	// 出现第一类敌机的概率为44/50
+		elist.push_back(make_shared<PlaneEnemy>(x, 0, ENEMY_HEIGHT, ENEMY_WIDTH,
+			ENEMY_SPEED, ENEMY_HP));
+	}
+
+
 }
 
 // 检测是否有子弹击中敌机
@@ -79,12 +101,12 @@ void GameCtrl::bulletHitPlane()
 	{
 		for (auto itEnemy = elist.begin(); itEnemy != elist.end(); ++itEnemy)
 		{
-			if (isConflict(*itBullet, *itEnemy))
+			if (isConflict(*itBullet, **itEnemy))
 			{
 				// 子弹击中敌机
 				++score;
 				itBullet = blist.erase(itBullet);
-				if (!itEnemy->decreaseHP())
+				if (!(*itEnemy)->decreaseHP())
 					itEnemy = elist.erase(itEnemy);
 				return;
 			}
@@ -107,7 +129,7 @@ bool GameCtrl::gameOver()
 	for (auto &e : elist)
 	{
 		// 有敌机和玩家碰撞
-		if (isConflict(player, e))
+		if (isConflict(player, *e))
 		{
 			return true;
 		}

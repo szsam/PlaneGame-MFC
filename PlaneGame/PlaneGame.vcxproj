@@ -194,6 +194,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="PlaneEnemy.h" />
+    <ClInclude Include="PlaneEnemy2.h" />
     <ClInclude Include="PlaneGame.h" />
     <ClInclude Include="PlaneGameDoc.h" />
     <ClInclude Include="PlaneGameView.h" />
@@ -209,6 +210,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="PlaneEnemy.cpp" />
+    <ClCompile Include="PlaneEnemy2.cpp" />
     <ClCompile Include="PlaneGame.cpp" />
     <ClCompile Include="PlaneGameDoc.cpp" />
     <ClCompile Include="PlaneGameView.cpp" />

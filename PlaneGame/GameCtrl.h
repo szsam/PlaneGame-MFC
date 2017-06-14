@@ -4,6 +4,7 @@
 #include "Bullet.h"
 #include "PlaneEnemy.h"
 #include <list>
+#include <memory>
 
 class GameCtrl
 {
@@ -27,14 +28,15 @@ public:
 	int getHeight() { return height; }
 	int getWidth() { return width;  }
 	const std::list<Bullet> &getBulletList() const { return blist; }
-	const std::list<PlaneEnemy> &getEnemyList() const { return elist; }
+	const std::list<std::shared_ptr<PlaneEnemy>> &
+		getEnemyList() const { return elist; }
 	const PlanePlayer &getPlanePlayer() const { return player; }
 	int getScore() const { return score; }
 
 private:
 	PlanePlayer player;
 	std::list<Bullet> blist;
-	std::list<PlaneEnemy> elist;
+	std::list<std::shared_ptr<PlaneEnemy>> elist;
 	int score;
 	int height;	//客户区高度
 	int width;	//客户区宽度
@@ -61,7 +63,13 @@ private:
 	static const int BULLET_WIDTH = 12;
 	static const int BULLET_SPEED = 60;
 
-	static const int ENEMY_HEIGHT = 50;
-	static const int ENEMY_WIDTH = 50;
+	static const int ENEMY_HEIGHT = 46;
+	static const int ENEMY_WIDTH = 65;
 	static const int ENEMY_SPEED = 3;
+	static const int ENEMY_HP = 1;
+
+	static const int ENEMY2_HEIGHT = 117;
+	static const int ENEMY2_WIDTH = 92;
+	static const int ENEMY2_SPEED = 3;
+	static const int ENEMY2_HP = 2;
 };

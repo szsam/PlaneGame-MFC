@@ -28,7 +28,8 @@ public:
 	bool IsGameOver() { return m_gameCtrl.gameOver(); }
 	void Init() { m_gameCtrl.init(); }
 	const std::list<Bullet> &GetBulletList() const { return m_gameCtrl.getBulletList(); }
-	const std::list<PlaneEnemy> &GetEnemyList() const { return m_gameCtrl.getEnemyList(); }
+	const std::list<std::shared_ptr<PlaneEnemy>> &
+		GetEnemyList() const { return m_gameCtrl.getEnemyList(); }
 	const PlanePlayer &GetPlanePlayer() const { return m_gameCtrl.getPlanePlayer(); }
 	int GetScore() const { return m_gameCtrl.getScore(); }
 	const CImage& GetBkground() const { return m_bkground; }
