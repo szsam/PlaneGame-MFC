@@ -26,6 +26,7 @@ BEGIN_MESSAGE_MAP(CPlaneGameView, CView)
 	ON_WM_TIMER()
 	ON_COMMAND(ID_GAME_START, &CPlaneGameView::OnGameStart)
 	ON_COMMAND(ID_GAME_EXIT, &CPlaneGameView::OnGameExit)
+	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
 // CPlaneGameView 构造/析构
@@ -58,6 +59,27 @@ void CPlaneGameView::OnDraw(CDC* pDC)
 		return;
 
 	// TODO: 在此处为本机数据添加绘制代码
+	//CRect clientRect;
+	//clientRect = CGlobalParams::getInstance()->getClientRect();
+	//CDC bufferDC;
+	//bufferDC.CreateCompatibleDC(pDC);
+	//CBitmap bufferBitmap;
+	//bufferBitmap.CreateCompatibleBitmap(pDC, clientRect.Width(), clientRect.Height());
+	//bufferDC.SelectObject(&bufferBitmap);
+	//bufferDC.Rectangle(clientRect);
+	//CPen *oldPen;
+	//CPen brownPen(PS_SOLID, 20, RGB(149, 64, 0));
+	//CBrush *oldBrush;
+	//CBrush blueBrush(RGB(168, 202, 215));
+	//oldPen = bufferDC.SelectObject(&brownPen);
+	//oldBrush = bufferDC.SelectObject(&blueBrush);
+	//bufferDC.Rectangle(m_gameRect);
+	//bufferDC.SelectObject(oldBrush);
+	//bufferDC.SelectObject(oldPen);
+	//m_bird.draw(&bufferDC);
+	//pDC->BitBlt(0, 0, clientRect.Width(), clientRect.Height(), &bufferDC, 0, 0, SRCCOPY);
+
+
 
 	// 绘制背景
 	const CImage &bk = pDoc->GetBkground();
@@ -257,4 +279,13 @@ void CPlaneGameView::OnGameExit()
 {
 	// TODO: 在此添加命令处理程序代码
 	AfxGetApp()->m_pMainWnd->SendMessage(WM_CLOSE);
+}
+
+
+BOOL CPlaneGameView::OnEraseBkgnd(CDC* pDC)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+
+	//return CView::OnEraseBkgnd(pDC);
+	return TRUE;
 }

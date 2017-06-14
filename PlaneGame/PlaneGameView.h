@@ -48,6 +48,7 @@ public:
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	afx_msg void OnGameStart();
 	afx_msg void OnGameExit();
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 };
 
 #ifndef _DEBUG  // PlaneGameView.cpp 中的调试版本
