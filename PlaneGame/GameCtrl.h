@@ -72,4 +72,9 @@ private:
 	static const int ENEMY2_WIDTH = 92;
 	static const int ENEMY2_SPEED = 3;
 	static const int ENEMY2_HP = 2;
+
+	static const int ENEMY3_HEIGHT = 327;
+	static const int ENEMY3_WIDTH = 218;
+	static const int ENEMY3_SPEED = 3;
+	static const int ENEMY3_HP = 10;
 };

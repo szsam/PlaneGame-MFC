@@ -2,6 +2,7 @@
 
 #include "GameCtrl.h"
 #include "PlaneEnemy2.h"
+#include "PlaneEnemy3.h"
 
 #include <ctime>
 
@@ -16,6 +17,7 @@ GameCtrl::GameCtrl() :
 	Bullet::initImage();
 	PlaneEnemy::initImage();
 	PlaneEnemy2::initImage();
+	PlaneEnemy3::initImage();
 }
 
 void GameCtrl::init()
@@ -78,8 +80,8 @@ void GameCtrl::addEnemy()
 	int rnd = random(0, 50);
 	
 	if (rnd == 0) {	// 出现第三类敌机的概率为1/50
-		//elist.push_back(make_shared<PlaneEnemy3>(x, 0, ENEMY3_HEIGHT, ENEMY3_WIDTH, 
-		//	ENEMY3_SPEED, ENEMY3_HP));
+		elist.push_back(make_shared<PlaneEnemy3>(x, 0, ENEMY3_HEIGHT, ENEMY3_WIDTH, 
+			ENEMY3_SPEED, ENEMY3_HP));
 	}
 	else if (rnd >= 1 && rnd <= 5)	// 出现第二类敌机的概率为1/10
 	{
