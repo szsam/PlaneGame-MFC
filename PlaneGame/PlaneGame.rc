@@ -86,6 +86,7 @@ BEGIN
     END
     POPUP "∞Ô÷˙(&H)"
     BEGIN
+        MENUITEM "ÕÊ∑®ΩÈ…‹..",                      ID_HELP_GUIDE
         MENUITEM "πÿ”⁄ PlaneGame(&A)...",         ID_APP_ABOUT
     END
 END

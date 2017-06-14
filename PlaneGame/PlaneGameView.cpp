@@ -27,6 +27,7 @@ BEGIN_MESSAGE_MAP(CPlaneGameView, CView)
 	ON_COMMAND(ID_GAME_START, &CPlaneGameView::OnGameStart)
 	ON_COMMAND(ID_GAME_EXIT, &CPlaneGameView::OnGameExit)
 	ON_WM_ERASEBKGND()
+	ON_COMMAND(ID_HELP_GUIDE, &CPlaneGameView::OnHelpGuide)
 END_MESSAGE_MAP()
 
 // CPlaneGameView 构造/析构
@@ -273,4 +274,12 @@ BOOL CPlaneGameView::OnEraseBkgnd(CDC* pDC)
 
 	//return CView::OnEraseBkgnd(pDC);
 	return TRUE;
+}
+
+
+void CPlaneGameView::OnHelpGuide()
+{
+	// TODO: 在此添加命令处理程序代码
+	MessageBox(_T("方向键或ADWS键控制飞机移动\n空格键发射子弹"),
+		 _T("PlaneGame-玩法介绍"), MB_ICONINFORMATION);
 }

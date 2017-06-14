@@ -49,6 +49,7 @@ public:
 	afx_msg void OnGameStart();
 	afx_msg void OnGameExit();
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+	afx_msg void OnHelpGuide();
 };
 
 #ifndef _DEBUG  // PlaneGameView.cpp 中的调试版本
