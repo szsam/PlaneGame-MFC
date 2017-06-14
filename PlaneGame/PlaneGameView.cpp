@@ -58,29 +58,6 @@ void CPlaneGameView::OnDraw(CDC* pDC)
 	if (!pDoc)
 		return;
 
-	// TODO: 在此处为本机数据添加绘制代码
-	//CRect clientRect;
-	//clientRect = CGlobalParams::getInstance()->getClientRect();
-	//CDC bufferDC;
-	//bufferDC.CreateCompatibleDC(pDC);
-	//CBitmap bufferBitmap;
-	//bufferBitmap.CreateCompatibleBitmap(pDC, clientRect.Width(), clientRect.Height());
-	//bufferDC.SelectObject(&bufferBitmap);
-	//bufferDC.Rectangle(clientRect);
-	//CPen *oldPen;
-	//CPen brownPen(PS_SOLID, 20, RGB(149, 64, 0));
-	//CBrush *oldBrush;
-	//CBrush blueBrush(RGB(168, 202, 215));
-	//oldPen = bufferDC.SelectObject(&brownPen);
-	//oldBrush = bufferDC.SelectObject(&blueBrush);
-	//bufferDC.Rectangle(m_gameRect);
-	//bufferDC.SelectObject(oldBrush);
-	//bufferDC.SelectObject(oldPen);
-	//m_bird.draw(&bufferDC);
-	//pDC->BitBlt(0, 0, clientRect.Width(), clientRect.Height(), &bufferDC, 0, 0, SRCCOPY);
-
-
-
 	// 绘制背景
 	const CImage &bk = pDoc->GetBkground();
 	if (!bk.IsNull())
@@ -107,8 +84,17 @@ void CPlaneGameView::OnDraw(CDC* pDC)
 
 	// 打印成绩
 	CString str;
-	str.Format(_T("%d"), pDoc->GetScore());
+	str.Format(_T("%.4d"), pDoc->GetScore());
+
+	pDC->SetBkMode(TRANSPARENT);
+
+	CFont font;
+	font.CreatePointFont(300, _T("微软雅黑"));
+	CFont *oldFont = pDC->SelectObject(&font);
+
 	pDC->TextOut(0, 0, str);
+
+	pDC->SelectObject(oldFont);
 }
 
 
@@ -242,9 +228,8 @@ void CPlaneGameView::OnTimer(UINT_PTR nIDEvent)
 			{
 				KillTimer(1);
 				KillTimer(2);
-				MessageBox(_T("GameOver"));				
-			}
-				
+				MessageBox(_T("GameOver"), 0, MB_ICONWARNING);
+			}		
 
 			break;
 		case 2:
