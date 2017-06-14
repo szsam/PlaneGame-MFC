@@ -19,18 +19,19 @@ public:
 public:
 	int GetHeight() { return m_gameCtrl.getHeight(); }
 	int GetWidth() { return m_gameCtrl.getWidth(); }
-	void DrawPlayer(CDC *pDC) { m_gameCtrl.drawPlayer(pDC); }
 	void PlayerMove(Dir d) { m_gameCtrl.playerMove(d); }
 	void Shoot() { m_gameCtrl.shoot(); }
-	void DrawBullets(CDC *pDC) { m_gameCtrl.drawBullets(pDC); }
 	void UpdateBullets() { m_gameCtrl.updateBullets(); }
 	void UpdateEnemies() { m_gameCtrl.updateEnemies(); }
 	void AddEnemy() { m_gameCtrl.addEnemy(); }
-	void DrawEnemies(CDC *pDC) { m_gameCtrl.drawEnemies(pDC); }
 	void BulletHitPlane() { m_gameCtrl.bulletHitPlane(); }
 	bool IsGameOver() { return m_gameCtrl.gameOver(); }
-	void PrintScore(CDC *pDC) { m_gameCtrl.printScore(pDC); }
 	void Init() { m_gameCtrl.init(); }
+	const std::list<Bullet> &GetBulletList() const { return m_gameCtrl.getBulletList(); }
+	const std::list<PlaneEnemy> &GetEnemyList() const { return m_gameCtrl.getEnemyList(); }
+	const PlanePlayer &GetPlanePlayer() const { return m_gameCtrl.getPlanePlayer(); }
+	int GetScore() const { return m_gameCtrl.getScore(); }
+
 // ÖØÐ´
 public:
 	virtual BOOL OnNewDocument();

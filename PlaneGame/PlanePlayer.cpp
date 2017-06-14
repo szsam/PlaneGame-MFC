@@ -9,11 +9,3 @@ PlanePlayer::PlanePlayer(int x, int y, int h, int w, int s) :
 	image.Load(_T("..\\Image\\PlanePlayer.png"));
 }
 
-void PlanePlayer::draw(CDC *pDC)
-{
-	if (!image.IsNull())
-	{
-		image.Draw(pDC->GetSafeHdc(), pos.x, pos.y, width, height);
-	}
-}
-

@@ -58,10 +58,21 @@ void CPlaneGameView::OnDraw(CDC* pDC)
 		return;
 
 	// TODO: 在此处为本机数据添加绘制代码
-	pDoc->DrawPlayer(pDC);
-	pDoc->DrawBullets(pDC);
-	pDoc->DrawEnemies(pDC);
-	pDoc->PrintScore(pDC);
+	DrawGameObject(pDoc->GetPlanePlayer(), pDC);
+
+	for (const auto &b : pDoc->GetBulletList())
+	{
+		DrawGameObject(b, pDC);
+	}
+
+	for (const auto &e : pDoc->GetEnemyList())
+	{
+		DrawGameObject(e, pDC);
+	}
+
+	CString str;
+	str.Format(_T("%d"), pDoc->GetScore());
+	pDC->TextOut(0, 0, str);
 }
 
 
@@ -162,6 +173,16 @@ void CPlaneGameView::ResizeWindow()
 		pDoc->GetHeight() + nHeightDiff;
 	//  The MoveWindow function resizes the frame window
 	GetParentFrame()->MoveWindow(&rcWindow);
+}
+
+void CPlaneGameView::DrawGameObject(const GameObject & go, CDC * pDC)
+{
+	const CImage &img = go.getImage();
+	if (!img.IsNull())
+	{
+		img.Draw(pDC->GetSafeHdc(), go.getX(), go.getY(), 
+			go.getWidth(), go.getHeight());
+	}
 }
 
 

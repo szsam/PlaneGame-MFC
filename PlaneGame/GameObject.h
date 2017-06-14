@@ -7,10 +7,12 @@ class GameObject
 	friend class GameCtrl;
 public:
 	bool move(int, int);
-	virtual void draw(CDC *) = 0;
-	int getHeight() { return height; }
-	int getWidth() { return width; }
-	//virtual const CImage &getImage() const = 0;
+	//virtual void draw(CDC *) = 0;
+	int getHeight() const { return height; }
+	int getWidth() const { return width; }
+	int getX() const { return pos.x; }
+	int getY() const { return pos.y; }
+	virtual const CImage &getImage() const = 0;
 	//virtual void loadImage();
 //private:
 //	CImage image;

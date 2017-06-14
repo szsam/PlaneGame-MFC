@@ -11,15 +11,7 @@ PlaneEnemy::PlaneEnemy(int x, int y, int h, int w, int s) :
 {
 }
 
-void PlaneEnemy::draw(CDC *pDC)
-{
-	if (!image.IsNull())
-	{
-		image.Draw(pDC->GetSafeHdc(), pos.x, pos.y, width, height);
-	}
-}
-
-void PlaneEnemy::init_image()
+void PlaneEnemy::initImage()
 {
 	image.Load(_T("..\\Image\\Enemy.png"));
 }

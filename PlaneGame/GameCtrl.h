@@ -10,30 +10,27 @@ class GameCtrl
 public:
 	GameCtrl();
 	void init();
-	//void mainLoop();
-	//void waitStart();
-	//void printGameOver();
 
 	void playerMove(Dir d);
-	void drawPlayer(CDC *pDC) { player.draw(pDC); }
 
 	void updateBullets();
-	void drawBullets(CDC *);
 
 	void shoot();
 
 	void updateEnemies();
 	void addEnemy();
-	void drawEnemies(CDC *);
 
 	void bulletHitPlane();
 
 	bool gameOver();
 
-	void printScore(CDC *);
-
 	int getHeight() { return height; }
 	int getWidth() { return width;  }
+	const std::list<Bullet> &getBulletList() const { return blist; }
+	const std::list<PlaneEnemy> &getEnemyList() const { return elist; }
+	const PlanePlayer &getPlanePlayer() const { return player; }
+	int getScore() const { return score; }
+
 private:
 	PlanePlayer player;
 	std::list<Bullet> blist;
@@ -41,16 +38,8 @@ private:
 	int score;
 	int height;	//客户区高度
 	int width;	//客户区宽度
-
-	//void keyboard();
-	//void drawBackground();
 	
 	bool isConflict(const GameObject &, const GameObject &) const;
-
-	
-
-	//void pause();
-
 
 	//// mainLoop循环体执行的时间间隔
 	//static const int SLEEP_INTERVAL = 50;

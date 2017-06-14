@@ -5,20 +5,17 @@
 #include <string>
 
 
-
 GameCtrl::GameCtrl() : 
 	height(CLIENT_HEIGHT), width(CLIENT_WIDTH), 
 	player(PLAYER_X, PLAYER_Y, PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_SPEED),
 	score(0)
 {
-	Bullet::init_image();
-	PlaneEnemy::init_image();
+	Bullet::initImage();
+	PlaneEnemy::initImage();
 }
 
 void GameCtrl::init()
 {
-	//dis.drawBackground();
-	//player.draw(dis);
 	blist.clear();
 	elist.clear();
 
@@ -30,7 +27,7 @@ void GameCtrl::init()
 
 void GameCtrl::playerMove(Dir d)
 {
-	player.set_dir(d);
+	player.setDir(d);
 	player.move(height, width);
 }
 
@@ -53,13 +50,6 @@ void GameCtrl::updateBullets()
 	}
 }
 
-void GameCtrl::drawBullets(CDC *pDC)
-{
-	for (auto &b : blist)
-	{
-		b.draw(pDC);
-	}
-}
 
 void GameCtrl::updateEnemies()
 {
@@ -79,13 +69,6 @@ void GameCtrl::addEnemy()
 	elist.emplace_back(x, 0, ENEMY_HEIGHT, ENEMY_WIDTH, ENEMY_SPEED);
 }
 
-void GameCtrl::drawEnemies(CDC *pDC)
-{
-	for (auto &e : elist)
-	{
-		e.draw(pDC);
-	}
-}
 
 void GameCtrl::bulletHitPlane()
 {
@@ -126,54 +109,3 @@ bool GameCtrl::gameOver()
 	}
 	return false;
 }
-
-void GameCtrl::printScore(CDC *pDC)
-{
-	CString str;
-	str.Format(_T("%d"), score);
-	pDC->TextOut(0, 0, str);
-}
-//
-//void GameCtrl::pause()
-//{
-//	dis.print(61, 2, "暂停中...");
-//
-//	while (_getch() != 'p')
-//		continue;
-//
-//	dis.print(61, 2, "         ");
-//}
-//
-//void GameCtrl::waitStart()
-//{
-//	dis.print(52, 2, "按p键开始游戏");
-//
-//	while (_getch() != 'p')
-//		continue;
-//
-//	dis.print(52, 2, "            ");
-//}
-//
-//void GameCtrl::printGameOver()
-//{
-//	dis.print(52, 2, "Game Over!");
-//}
-//
-//void GameCtrl::playerMove(Dir d, int h, int w)
-//{
-//	player.set_dir(d);
-//	player.move(h, w);
-//}
-
-//int main()
-//{
-//	GameCtrl gameCtrl;
-//
-//	gameCtrl.init();
-//	gameCtrl.waitStart();
-//	gameCtrl.mainLoop();
-//	gameCtrl.printGameOver();
-//
-//	// Sleep(1000);
-//
-//}

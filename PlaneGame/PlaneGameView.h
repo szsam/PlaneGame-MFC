@@ -28,7 +28,7 @@ protected:
 // 实现
 public:
 	virtual ~CPlaneGameView();
-	void ResizeWindow();
+	
 
 #ifdef _DEBUG
 	virtual void AssertValid() const;
@@ -36,7 +36,8 @@ public:
 #endif
 
 protected:
-	// PlanePlayer player;
+	void ResizeWindow();
+	void DrawGameObject(const GameObject &go, CDC *pDC);
 
 // 生成的消息映射函数
 protected:

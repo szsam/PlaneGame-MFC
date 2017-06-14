@@ -6,9 +6,9 @@ class PlaneEnemy : public GameObject
 	friend class GameCtrl;
 public:
 	PlaneEnemy(int x, int y, int h, int w, int s);
-	void draw(CDC *) override;
+	const CImage &getImage() const override { return image; }
 
-	static void init_image();
+	static void initImage();
 private:
 	static CImage image;
 
