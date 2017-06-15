@@ -4,7 +4,7 @@
 
 class GameObject
 {
-	friend class GameCtrl;
+	//friend class GameCtrl;
 public:
 	bool move(int, int);
 	//virtual void draw(CDC *) = 0;

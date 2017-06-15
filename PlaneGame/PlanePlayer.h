@@ -4,7 +4,7 @@
 
 class PlanePlayer : public GameObject
 {
-	friend class GameCtrl;
+	//friend class GameCtrl;
 public:
 	PlanePlayer(int x, int y, int h, int w, int s);
 	void setDir(Dir d) { dir = d; }

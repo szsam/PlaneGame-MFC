@@ -3,7 +3,7 @@
 
 class PlaneEnemy3 : public PlaneEnemy
 {
-	friend class GameCtrl;
+	// friend class GameCtrl;
 public:
 	PlaneEnemy3(int x, int y, int h, int w, int s, int hp);
 	const CImage &getImage() const override { return image; }

@@ -229,6 +229,7 @@
     <ResourceCompile Include="PlaneGame.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="res\PlaneGame.rc2" />
   </ItemGroup>
   <ItemGroup>

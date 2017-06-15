@@ -41,8 +41,8 @@ void GameCtrl::playerMove(Dir d)
 void GameCtrl::shoot()
 {
 	// 子弹从飞机头部发出
-	blist.emplace_back(player.pos.x + player.width / 2 - BULLET_WIDTH / 2,
-		player.pos.y - BULLET_HEIGHT, BULLET_HEIGHT, BULLET_WIDTH, BULLET_SPEED);
+	blist.emplace_back(player.getX() + player.getWidth() / 2 - BULLET_WIDTH / 2,
+		player.getY() - BULLET_HEIGHT, BULLET_HEIGHT, BULLET_WIDTH, BULLET_SPEED);
 }
 
 // 更新子弹的位置，若越界，则将其移除
@@ -119,10 +119,10 @@ void GameCtrl::bulletHitPlane()
 // 检测两个矩形是否发生碰撞
 bool GameCtrl::isConflict(const GameObject &rect1, const GameObject &rect2) const
 {
-	return	rect1.pos.x < rect2.pos.x + rect2.width &&
-		rect1.pos.x + rect1.width > rect2.pos.x &&
-		rect1.pos.y < rect2.pos.y + rect2.height &&
-		rect1.height + rect1.pos.y > rect2.pos.y;
+	return	rect1.getX() < rect2.getX() + rect2.getWidth() &&
+		rect1.getX() + rect1.getWidth() > rect2.getX() &&
+		rect1.getY() < rect2.getY() + rect2.getHeight() &&
+		rect1.getHeight() + rect1.getY() > rect2.getY();
 }
 
 // 判断游戏是否结束
