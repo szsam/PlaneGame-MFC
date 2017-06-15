@@ -6,6 +6,9 @@ class GameObject
 {
 	//friend class GameCtrl;
 public:
+	GameObject(CPoint p, int h, int w, Dir d, int s);
+	virtual ~GameObject() = default;
+
 	bool move(int, int);
 	//virtual void draw(CDC *) = 0;
 	int getHeight() const { return height; }
@@ -19,7 +22,7 @@ public:
 
 protected:
 	// methods
-	GameObject(CPoint p, int h, int w, Dir d, int s);
+	
 
 	// attributes
 	//int x, y;

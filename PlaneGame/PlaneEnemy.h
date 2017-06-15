@@ -6,6 +6,8 @@ class PlaneEnemy : public GameObject
 	//friend class GameCtrl;
 public:
 	PlaneEnemy(int x, int y, int h, int w, int s, int hp);
+	virtual ~PlaneEnemy() = default;
+
 	const CImage &getImage() const override { return image; }
 	bool decreaseHP();
 private:
