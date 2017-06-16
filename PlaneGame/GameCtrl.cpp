@@ -38,6 +38,7 @@ void GameCtrl::playerMove(Dir d)
 	player.move(height, width);
 }
 
+// 玩家飞机发射子弹
 void GameCtrl::shoot()
 {
 	// 子弹从飞机头部发出
